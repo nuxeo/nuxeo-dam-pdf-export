@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 1
+Bundle-Name: Nuxeo DAM PDF Export
+Bundle-SymbolicName: org.nuxeo.dam.pdf.export;singleton=true
+Bundle-Localization: plugin
+Bundle-Version: 1.0.0
+Bundle-Vendor: Nuxeo
+Nuxeo-component: OSGI-INF/dam-pdf-export-actions-contrib.xml
