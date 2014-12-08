@@ -66,14 +66,11 @@ public class PDFExportActions implements Serializable {
 
             FacesContext context = FacesContext.getCurrentInstance();
             HttpServletResponse response = (HttpServletResponse) context.getExternalContext().getResponse();
-            BufferedOutputStream buff = new BufferedOutputStream(
-                    response.getOutputStream());
+            BufferedOutputStream buff = new BufferedOutputStream(response.getOutputStream());
 
-            PDFCreator creator = new PDFCreator(docs,
-                    (NuxeoPrincipal) currentUser);
+            PDFCreator creator = new PDFCreator(docs, (NuxeoPrincipal) currentUser);
             if (creator.createPDF("PDF Export", buff)) {
-                response.setHeader("Content-Disposition",
-                        "attachment; filename=\"PDF export.pdf\";");
+                response.setHeader("Content-Disposition", "attachment; filename=\"PDF export.pdf\";");
                 response.setContentType("application/pdf");
                 response.flushBuffer();
                 context.responseComplete();

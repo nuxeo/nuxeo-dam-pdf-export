@@ -57,8 +57,7 @@ public class PDFCreator {
         this.currentUser = currentUser;
     }
 
-    public boolean createPDF(String title, OutputStream out)
-            throws ClientException {
+    public boolean createPDF(String title, OutputStream out) throws ClientException {
         try {
             Document document = new Document();
             PdfWriter.getInstance(document, out);
@@ -75,8 +74,7 @@ public class PDFCreator {
             titleParagraph.setAlignment(Element.ALIGN_CENTER);
             document.add(titleParagraph);
             Font authorFont = new Font(Font.HELVETICA, 20);
-            Paragraph authorParagraph = new Paragraph("By "
-                    + Functions.principalFullName(currentUser), authorFont);
+            Paragraph authorParagraph = new Paragraph("By " + Functions.principalFullName(currentUser), authorFont);
             authorParagraph.setAlignment(Element.ALIGN_CENTER);
             document.add(authorParagraph);
 
@@ -93,14 +91,12 @@ public class PDFCreator {
                 Blob blob = picture.getPictureFromTitle(ORIGINAL_JPEG_VIEW);
                 Rectangle pageSize = document.getPageSize();
                 if (blob != null) {
-                    Paragraph imageTitle = new Paragraph(doc.getTitle(),
-                            font);
+                    Paragraph imageTitle = new Paragraph(doc.getTitle(), font);
                     imageTitle.setAlignment(Paragraph.ALIGN_CENTER);
                     document.add(imageTitle);
 
                     Image image = Image.getInstance(blob.getByteArray());
-                    image.scaleToFit(pageSize.getWidth() - 20,
-                            pageSize.getHeight() - 100);
+                    image.scaleToFit(pageSize.getWidth() - 20, pageSize.getHeight() - 100);
                     image.setAlignment(Image.MIDDLE);
                     Paragraph imageParagraph = new Paragraph();
                     imageParagraph.add(image);
